@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
-private float horizontal,
-speed = 8f,
-jumpingPower = 16f;
+    private float horizontal,
+    speed = 8f;
+
+
+    public float jumpingPower = 18f;
 private bool isFacingRight = true;
 
 [SerializeField] private Rigidbody2D rb;
