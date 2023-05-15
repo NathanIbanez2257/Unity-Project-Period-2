@@ -720,7 +720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e1b1dcca252c8f46b03038db9d89bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 0.05
+  offsetY: 1.69
   target: {fileID: 1333810452}
 --- !u!1 &538177065
 GameObject:
@@ -1142,6 +1142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048e999d9afc964468b1e4e9cfe09dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 8
   jumpingPower: 18
   rb: {fileID: 1333810449}
   groundCheck: {fileID: 46095258}

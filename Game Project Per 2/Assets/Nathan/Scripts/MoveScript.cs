@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
-    private float horizontal,
-    speed = 8f;
+    private float horizontal;
+
+    public float speed = 8f;
 
 
     public float jumpingPower = 18f;
