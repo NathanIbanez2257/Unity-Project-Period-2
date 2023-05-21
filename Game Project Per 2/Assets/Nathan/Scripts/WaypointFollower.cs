@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
-{
-    [SerializeField] private GameObject[] waypoints;
-    private int currentWaypointIndex = 0;
+{    
+    private int _currentWaypointIndex = 0;
 
-    [SerializeField] public float speed = 2f;
+    [Header("Platform Speed")]
+    [SerializeField] private float _speed = 2f;
+
+    [Header("Platform Waypoints")]
+    [SerializeField] private GameObject[] _waypoints;
+
     // Update is called once per frame
     private void Update()
     {
-        if(Vector2.Distance(waypoints[currentWaypointIndex].transform.position, transform.position) < .1f)
+        if (Vector2.Distance(_waypoints[_currentWaypointIndex].transform.position, transform.position) < .1f)
         {
-            currentWaypointIndex++;
+            _currentWaypointIndex++;
         }
-        if (currentWaypointIndex >= waypoints.Length)
+        if (_currentWaypointIndex >= _waypoints.Length)
         {
-            currentWaypointIndex = 0;
+            _currentWaypointIndex = 0;
         }
 
-        transform.position = Vector2.MoveTowards(transform.position, waypoints[currentWaypointIndex].transform.position, Time.deltaTime * speed);
-        
+        transform.position = Vector2.MoveTowards(
+            transform.position, 
+            _waypoints[_currentWaypointIndex].transform.position, 
+            Time.deltaTime * _speed);
+
     }
 }

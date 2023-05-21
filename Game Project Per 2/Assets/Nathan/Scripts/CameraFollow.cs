@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    //public Vector3 offset = new Vector3(0f, 0f, -10f);
-    //public float smoothTime = .25f;
-    private Vector3 velocity = Vector3.zero;
-    public float offsetY = 0f;
+    private Vector3 _velocity = Vector3.zero;
 
-    [SerializeField] private Transform target;
-    
-    // Update is called once per frame
+    [Header("Camera Offset")]
+    [SerializeField] float _offsetY = 0f;
+
+
+    [Header("Camera Focus")]
+    [SerializeField] private Transform _target;
+
+
     void Update()
     {
-        //Vector3 tagetPosition = target.position + offset;
-        //transform.position = Vector3(transform.position, tagetPosition, ref velocity, smoothTime);
-
-        transform.position = new Vector3(target.position.x, offsetY, target.position.z - 10);
+        transform.position = new Vector3(_target.position.x, _offsetY, _target.position.z - 10);
     }
 }

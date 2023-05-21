@@ -4,41 +4,39 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Transform firePosition;
-    public GameObject projectile;
-
-    [SerializeField] private float attackCooldown;
-    //[SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject[] fireballs;
-
-
+    [Header("Attack Settings")]
+    [SerializeField] private float _attackCooldown;
+    [SerializeField] private Transform _bulletPoint;
+    [SerializeField] private GameObject[] _bullets;
 
     private float cooldownTimer = Mathf.Infinity;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        
-    }
 
-    // Update is called once per frame
+
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && cooldownTimer > attackCooldown)
+        if (Input.GetMouseButtonDown(0) && cooldownTimer > _attackCooldown)
         {
             Attack();
         }
+
         cooldownTimer += Time.deltaTime;
     }
 
     private void Attack()
     {
         cooldownTimer = 0;
-        Instantiate(projectile, firePosition.position, firePosition.rotation);
 
-        //fireballs[0].transform.position = firePoint.position;
-       // fireballs[0].GetComponent<Projectile>().SetDirection(Math.Sign(transform.localScale.x))
+        _bullets[FindBullet()].transform.position = _bulletPoint.position;
+        _bullets[FindBullet()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+    }
 
-
+    private int FindBullet()
+    {
+        for (int i = 0; i < _bullets.Length; i++)
+        {
+            if (!_bullets[i].activeInHierarchy)
+                return i;
+        }
+        return 0;
     }
 }
