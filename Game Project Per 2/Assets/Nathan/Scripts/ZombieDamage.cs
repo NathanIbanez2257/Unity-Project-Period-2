@@ -4,25 +4,34 @@ using UnityEngine;
 
 public class ZombieDamage : MonoBehaviour
 {
-    public KnockBackTrigger knockBackTrigger;
-    [Header("Zombie Damage")]
-    [SerializeField] private int _damage;
+    private KnockBackTrigger _knockBackTrigger;
 
     [Header("Player Info")]
     [SerializeField] private PlayerHealth _playerHealth;
-    [SerializeField] private MoveScript _playerMovement;
 
 
-    // Start is called before the first frame update
+
+    private void Start()
+    {
+        _knockBackTrigger = GetComponent<KnockBackTrigger>();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
-            
-            knockBackTrigger.KnockBack(collision);
-
-            _playerHealth.TakeDamage(_damage);
+        {
+            _knockBackTrigger.KnockBack(collision);
+            Debug.Log("Player Hit");
+            TakeDamage();
         }
     }
+    private void TakeDamage()
+    {
+        _playerHealth.TakeDamage(2);
+    }
+    
+}
 
-   
+
+
+
 

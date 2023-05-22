@@ -13,6 +13,7 @@ public class KnockBackTrigger : MonoBehaviour
         if (player != null)
         {
             player.KnockBack(transform);
+
         }
     }
 }

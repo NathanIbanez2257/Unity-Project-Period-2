@@ -10,42 +10,37 @@ public class MoveScript : MonoBehaviour
     private bool _grounded;
     private bool _isFacingRight = true;
 
-    [Header("Unity In Game Settings")]
-    [SerializeField] public Rigidbody2D _rb;
-    [SerializeField] private Animator _anim;
-    [SerializeField] private Transform _groundCheck;
+    [Header("Ground For Player")]
+    [SerializeField] private LayerMask _groundLayer;
     
 
-    [SerializeField] private LayerMask _groundLayer;
-
+    private Transform _center;
+    private Rigidbody2D _rb;
+    private Animator _anim;
+    private Transform _groundCheck;
+    
     [Header("Player Settings")]
     [SerializeField] private float _speed = 8f;
     [SerializeField] private float _jumpingPower = 18f;
 
     [Header("Knockback Settings")]
-    [SerializeField] private Transform _center;
+    
     [SerializeField] private float _knockBackVel = 8f;
     [SerializeField] private bool _knockedBack;
     [SerializeField] private float _knockedBackTime = 1f;
 
-
-
-
-
-    //[SerializeField] public float _KBforce;
-    //[SerializeField] public float _KBCounter;
-    //[SerializeField] public float _KBTotalTime;
-    //[SerializeField] public bool _knockFromRight;
-
-
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
+        _groundCheck = GetComponent<Transform>();
+        _center = GetComponent<Transform>();
+
     }
     void Update()
     {
         _horizontal = Input.GetAxisRaw("Horizontal");
-        //_horizontal = Input.GetAxisRaw("Horizontal");
 
         if (!_knockedBack)
         {
@@ -56,26 +51,6 @@ public class MoveScript : MonoBehaviour
             var lerpedXVel = Mathf.Lerp(_rb.velocity.x, 0f, Time.deltaTime * 3);
             _rb.velocity = new Vector2(lerpedXVel,_rb.velocity.y);
         }
-
-
-        //if (_KBCounter <= 0)
-        //{
-
-        //    _rb.velocity = new Vector2(_horizontal * _speed, _rb.velocity.y);
-        //}
-        //else
-        //{
-        //    if (_knockFromRight == true)
-        //    {
-        //        _rb.AddForce(new Vector2(_KBforce, _KBforce / 6f), ForceMode2D.Impulse);
-        //    }
-
-        //    if (_knockFromRight == false)
-        //    {
-        //        _rb.AddForce(new Vector2(-_KBforce, _KBforce / 6f), ForceMode2D.Impulse);
-        //    }
-        //    _KBCounter -= Time.deltaTime;
-        //}
 
         Flip();
 
@@ -89,9 +64,7 @@ public class MoveScript : MonoBehaviour
         }
 
         _anim.SetBool("run", _horizontal != 0 && IsGrounded());
-
         _anim.SetBool("grounded", IsGrounded());
-
 
     }
 
@@ -100,14 +73,11 @@ public class MoveScript : MonoBehaviour
     {
         _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         IsGrounded();
-
     }
-   
-
+  
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(_groundCheck.position, 0.2f, _groundLayer);
-
     }
 
     private void Flip()
@@ -118,7 +88,6 @@ public class MoveScript : MonoBehaviour
             Vector3 _localScale = transform.localScale;
             _localScale.x *= -1f;
             transform.localScale = _localScale;
-
         }
     }
 
@@ -129,17 +98,17 @@ public class MoveScript : MonoBehaviour
         _rb.velocity = dir.normalized * _knockBackVel;
 
         _spriteRenderer.color = Color.red;
-        StartCoroutine(FadeToWhite());
+        StartCoroutine(FadeToWhite(_spriteRenderer));
 
         StartCoroutine(AntiKnockBack());
     }
 
-    private IEnumerator FadeToWhite()
+    public IEnumerator FadeToWhite(SpriteRenderer _spriteRend)
     {
-        while(_spriteRenderer.color != Color.white)
+        while(_spriteRend.color != Color.white)
         {
             yield return null;
-            _spriteRenderer.color = Color.Lerp(_spriteRenderer.color, Color.white, Time.deltaTime * 3);
+            _spriteRend.color = Color.Lerp(_spriteRend.color, Color.white, Time.deltaTime * 3);
         }
     }
 

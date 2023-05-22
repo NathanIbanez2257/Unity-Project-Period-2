@@ -292,10 +292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e5aa9a6539a7d44add402266db5d8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePosition: {fileID: 809785167}
-  projectile: {fileID: 5067642689988764156, guid: c424713e20ea18042a0b6b8255a95d8e, type: 3}
-  attackCooldown: 0.25
-  fireballs: []
+  _attackCooldown: 0
+  _bulletPoint: {fileID: 0}
+  _bullets: []
 --- !u!114 &1587363037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,13 +307,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048e999d9afc964468b1e4e9cfe09dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  jumpingPower: 22
-  rb: {fileID: 1587363038}
-  groundCheck: {fileID: 1646998610}
-  groundLayer:
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
+  _speed: 8
+  _jumpingPower: 18
+  _knockBackVel: 8
+  _knockedBack: 0
+  _knockedBackTime: 1
 --- !u!114 &6879941033121179753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,3 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c6f6a0ad92700478b8267bb9aaf723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxHealth: 10
+  _health: 0
+  _healthBar: {fileID: 0}
+  _gameManager: {fileID: 0}

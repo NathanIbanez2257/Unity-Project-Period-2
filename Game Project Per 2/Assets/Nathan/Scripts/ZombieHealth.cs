@@ -4,24 +4,46 @@ using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour
 {
+    private SpriteRenderer _spriteRend;
+    [SerializeField] private ScoreScript _scoreScript;
     [Header("Health Setttings")]
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int health;
+    [SerializeField] private int _maxHealth;
+    [SerializeField] private int _health = 5;
 
     private void Start()
     {
-        maxHealth = health;
+        _spriteRend = GetComponent<SpriteRenderer>();
+        _maxHealth = _health;
     }
-
-
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        _health -= damage;
 
-        if (health <= 0)
+        if (_health <= 0)
         {
+            _scoreScript._scoreValue += 1;
             Destroy(gameObject);
         }
     }
+
+    public void DamagedZombie()
+    {
+        StartCoroutine(FadeToWhite(_spriteRend));
+    }
+
+   
+    public IEnumerator FadeToWhite(SpriteRenderer _spriteRend)
+    {
+        Debug.Log("FadeToWhite Ran");
+        _spriteRend.color = Color.red;
+
+        while (_spriteRend.color != Color.white)
+        {
+            yield return null;
+            _spriteRend.color = Color.Lerp(_spriteRend.color, Color.white, Time.deltaTime * 1);
+        }
+    }
+
+
 }

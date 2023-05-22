@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class AIChase : MonoBehaviour
 {
-    private float _closeRange = 25.00f, _midRange = 80.00f, _farRange = 194.00f, _farthestRange = 300.00f, _moveSpeed;
+    private float _closeRange = 25.00f, _midRange = 80.00f, _farRange = 194.00f, _farthestRange = 300.00f, _lastStage = 50f,
+        _moveSpeed;
     private bool _isFacingRight = true;
+    [SerializeField] private bool _finalStage;
     private Rigidbody2D _rb;
 
     [Header("Player Component")]
@@ -20,33 +22,63 @@ public class AIChase : MonoBehaviour
     void Update()
     {
         float _distanceToPlayer = Vector2.Distance(transform.position, _player.position);
-        //Debug.Log("DistanceToPlayer" + distanceToPlayer);
+        //Debug.Log("DistanceToPlayer" + _distanceToPlayer);
 
         ChasePlayer();
 
-        if (_distanceToPlayer < _closeRange)
-        {
-            _moveSpeed = 4.25f;
-        }
 
-        else if (_distanceToPlayer > _farthestRange)
+        if (_finalStage == false)
         {
-            _moveSpeed = 11f;
-        }
+            if (_distanceToPlayer < _closeRange)
+            {
+                _moveSpeed = 4.25f;
+            }
 
-        else if (_distanceToPlayer > _farRange)
-        {
-            _moveSpeed = 9f;
-        }
+            else if (_distanceToPlayer > _farthestRange)
+            {
+                _moveSpeed = 11f;
+            }
 
-        else if (_distanceToPlayer > _midRange)
-        {
-            _moveSpeed = 7f;
+            else if (_distanceToPlayer > _farRange)
+            {
+                _moveSpeed = 9f;
+            }
+
+            else if (_distanceToPlayer > _midRange)
+            {
+                _moveSpeed = 7f;
+            }
+
+            else
+            {
+                _moveSpeed = 3.5f;
+            }
         }
 
         else
         {
-            _moveSpeed = 3.5f;
+            _moveSpeed = 0;
+
+            if(_distanceToPlayer < _lastStage)
+            {
+                Debug.Log("In Range");
+                _moveSpeed = 8f;
+            }
+            //Debug.Log("Final Stage Zombies");
+
+            //if (_distanceToPlayer > _lastStage)
+            //{
+            //    if (_distanceToPlayer < _closeRange)
+            //    {
+            //        Debug.Log("Run If");
+            //        _moveSpeed = 4f;
+            //    }
+            //    else
+            //    {
+            //        Debug.Log("Run else");
+            //        _moveSpeed = 0f;
+            //    }
+            //}
         }
     }
 
