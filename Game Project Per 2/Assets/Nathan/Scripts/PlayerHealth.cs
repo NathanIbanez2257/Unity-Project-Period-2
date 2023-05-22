@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     [Header("Health Bar Settings")]
     [SerializeField] private Image _healthBar;
     [SerializeField] private GameManagerScript _gameManager;
+
+    [SerializeField] private AudioSource _oofSound;
  
     void Start()
     {
@@ -23,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        _oofSound.Play();
         _health -= damage;
     }
     void Update()

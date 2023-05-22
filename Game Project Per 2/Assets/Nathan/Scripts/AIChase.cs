@@ -10,11 +10,15 @@ public class AIChase : MonoBehaviour
     private bool _isFacingRight = true;
     [SerializeField] private bool _finalStage;
     private Rigidbody2D _rb;
+    private bool soundCheck = false;
 
     [Header("Player Component")]
     [SerializeField] private Transform _player;
+
+    [SerializeField] private AudioSource _zombieSound;
     void Start()
     {
+        _zombieSound = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -22,7 +26,6 @@ public class AIChase : MonoBehaviour
     void Update()
     {
         float _distanceToPlayer = Vector2.Distance(transform.position, _player.position);
-        //Debug.Log("DistanceToPlayer" + _distanceToPlayer);
 
         ChasePlayer();
 
@@ -31,6 +34,12 @@ public class AIChase : MonoBehaviour
         {
             if (_distanceToPlayer < _closeRange)
             {
+                if (!soundCheck)
+                {
+                    soundCheck = true;
+                    Debug.Log("Sound Play");
+                    _zombieSound.Play();
+                }
                 _moveSpeed = 4.25f;
             }
 
@@ -64,21 +73,7 @@ public class AIChase : MonoBehaviour
                 Debug.Log("In Range");
                 _moveSpeed = 8f;
             }
-            //Debug.Log("Final Stage Zombies");
-
-            //if (_distanceToPlayer > _lastStage)
-            //{
-            //    if (_distanceToPlayer < _closeRange)
-            //    {
-            //        Debug.Log("Run If");
-            //        _moveSpeed = 4f;
-            //    }
-            //    else
-            //    {
-            //        Debug.Log("Run else");
-            //        _moveSpeed = 0f;
-            //    }
-            //}
+            
         }
     }
 

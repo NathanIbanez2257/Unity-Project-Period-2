@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/javi/new.unity
-    guid: 9038976fc129e2a46831033f6c25a77e
-  - enabled: 1
     path: Assets/Nathan/Scenes/MainMenu.unity
     guid: 26795153f9874cc4e9e76df37a21bb8d
+  - enabled: 1
+    path: Assets/Nathan/Scenes/Level 1.unity
+    guid: 9038976fc129e2a46831033f6c25a77e
   m_configObjects: {}

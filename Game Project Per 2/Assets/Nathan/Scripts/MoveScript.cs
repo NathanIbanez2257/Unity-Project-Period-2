@@ -29,6 +29,9 @@ public class MoveScript : MonoBehaviour
     [SerializeField] private bool _knockedBack;
     [SerializeField] private float _knockedBackTime = 1f;
 
+    [Header("Audio Setting")]
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -56,24 +59,15 @@ public class MoveScript : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
+            jumpSoundEffect.Play();
             _rb.velocity = new Vector2(_rb.velocity.x, _jumpingPower);
         }
-        if (Input.GetButtonUp("Jump") && _rb.velocity.y > 0f)
-        {
-            Jump();
-        }
-
+     
         _anim.SetBool("run", _horizontal != 0 && IsGrounded());
         _anim.SetBool("grounded", IsGrounded());
 
     }
 
-
-    private void Jump()
-    {
-        _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
-        IsGrounded();
-    }
   
     private bool IsGrounded()
     {

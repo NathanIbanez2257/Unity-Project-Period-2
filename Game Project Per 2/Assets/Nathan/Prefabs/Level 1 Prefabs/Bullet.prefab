@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96cf26c5afa9ce4fa53355183023c03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2277489792020954938, guid: 9f5d30bc61cd1364cb52236405740e3d, type: 3}
   speed: 28
 --- !u!50 &3807021718792709186
 Rigidbody2D:

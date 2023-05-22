@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _attackCooldown;
     [SerializeField] private Transform _bulletPoint;
     [SerializeField] private GameObject[] _bullets;
+    [SerializeField] private AudioSource _bulletShotAudio;
 
     private float cooldownTimer = Mathf.Infinity;
 
@@ -16,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && cooldownTimer > _attackCooldown)
         {
+            _bulletShotAudio.Play();
             Attack();
         }
 
