@@ -185,6 +185,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _finalStage: 0
+  _zombieDistance: 
+  _ZombieStatic: 0
   _player: {fileID: 0}
   _zombieSound: {fileID: 2108676944040815915}
 --- !u!114 &7042076237855785030

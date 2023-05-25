@@ -339,75 +339,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1811662, y: 1.7702379}
   m_EdgeRadius: 0
---- !u!114 &6793701470924846644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725280587710750314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43e5aa9a6539a7d44add402266db5d8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackCooldown: 0.25
-  _bulletPoint: {fileID: 6793701470486093223}
-  _bullets:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _bulletShotAudio: {fileID: 1805131834}
---- !u!114 &6793701470924846645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725280587710750314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 048e999d9afc964468b1e4e9cfe09dbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _speed: 15
-  _jumpingPower: 23
-  _knockBackVel: 20
-  _knockedBack: 0
-  _knockedBackTime: 0.75
-  jumpSoundEffect: {fileID: 1805131833}
---- !u!114 &86244133291254401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725280587710750314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12c6f6a0ad92700478b8267bb9aaf723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 10
-  _health: 10
-  _healthBar: {fileID: 0}
-  _gameManager: {fileID: 0}
-  _oofSound: {fileID: 1805131835}
 --- !u!82 &1805131833
 AudioSource:
   m_ObjectHideFlags: 0
@@ -516,7 +447,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7740c892a5cf5ff4db3028fd275e452c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.18
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -696,3 +627,72 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &86244133291254401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725280587710750314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c6f6a0ad92700478b8267bb9aaf723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
+  _health: 10
+  _healthBar: {fileID: 0}
+  _gameManager: {fileID: 0}
+  _oofSound: {fileID: 1805131835}
+--- !u!114 &6793701470924846644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725280587710750314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e5aa9a6539a7d44add402266db5d8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCooldown: 0.25
+  _bulletPoint: {fileID: 6793701470486093223}
+  _bullets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _bulletShotAudio: {fileID: 1805131834}
+--- !u!114 &6793701470924846645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725280587710750314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048e999d9afc964468b1e4e9cfe09dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _speed: 15
+  _jumpingPower: 23
+  _knockBackVel: 20
+  _knockedBack: 0
+  _knockedBackTime: 0.75
+  jumpSoundEffect: {fileID: 1805131833}
